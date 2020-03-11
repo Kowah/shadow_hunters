@@ -21,7 +21,4 @@ const Role = data.define('role', {
     timestamps: false,
 });
 
-data.sync().then(() => {
-});
-
 module.exports = Role;

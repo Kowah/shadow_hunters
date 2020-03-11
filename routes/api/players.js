@@ -1,10 +1,11 @@
 var express = require('express');
 var router = express.Router();
-var Player = require('../../data/models/player')
+var Player = require('../../data/models/player');
+const Connection = require('../../data/models/connection');
 
 /* GET player listing. */
 router.get('/', function(req, res, next) {
-    Player.findAll().then(players => {
+    Player.findAll({include:[{model:Connection,name:'connection'}]}).then(players => {
         res.json(players);
     });
 });
@@ -12,6 +13,7 @@ router.get('/', function(req, res, next) {
 /* GET player by id. */
 router.get('/:id', function(req, res, next) {
     Player.findOne({
+        include:[{model:Connection,name:'connection'}],
         where:{id:req.params.id}
     }).then(player => {
         res.json(player);

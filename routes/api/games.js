@@ -1,10 +1,14 @@
-var express = require('express');
-var router = express.Router();
-var Game = require('../../data/models/game')
+let express = require('express');
+let router = express.Router();
+let Game = require('../../data/models/game')
+let Connection = require('../../data/models/connection');
+let Player = require('../../data/models/connection');
 
 /* GET game listing. */
 router.get('/', function(req, res, next) {
-    Game.findAll().then(games => {
+    Game.findAll({
+        include:[{ all: true, nested: true}],
+    }).then(games => {
         res.json(games);
     });
 });
@@ -12,7 +16,8 @@ router.get('/', function(req, res, next) {
 /* GET game by id. */
 router.get('/:id', function(req, res, next) {
     Game.findOne({
-        where:{id:req.params.id}
+        where:{id:req.params.id},
+        include:[{ all: true, nested: true}],
     }).then(game => {
         res.json(game);
     });

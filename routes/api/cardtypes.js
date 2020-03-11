@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var Cardtype = require('../../data/models/cardtype')
+var Cardtype = require('../../data/models/cardtype');
 
 /* GET cardtypes listing. */
 router.get('/', function(req, res, next) {

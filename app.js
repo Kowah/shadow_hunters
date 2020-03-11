@@ -4,6 +4,8 @@ let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 
+let data = require('./data/connection');
+
 let indexRouter = require('./routes/index');
 let locationsRouter = require('./routes/api/locations');
 let locationdicesRouter = require('./routes/api/locationdices');
@@ -13,6 +15,9 @@ let characterRouter = require('./routes/api/characters');
 let rolesRouter = require('./routes/api/roles');
 let playersRouter = require('./routes/api/players');
 let gamesRouter = require('./routes/api/games');
+let connectionsRouter = require('./routes/api/connections');
+
+data.sync().then(() => {});
 
 let api = '/api';
 
@@ -37,6 +42,7 @@ app.use(api + '/characters', characterRouter);
 app.use(api + '/roles', rolesRouter);
 app.use(api + '/players', playersRouter);
 app.use(api + '/games', gamesRouter);
+app.use(api + '/connections', connectionsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

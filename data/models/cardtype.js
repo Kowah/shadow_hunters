@@ -17,7 +17,4 @@ const Cardtype = data.define('cardtype', {
     timestamps: false,
 });
 
-data.sync().then(() => {
-});
-
 module.exports = Cardtype;

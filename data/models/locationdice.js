@@ -18,8 +18,4 @@ const Locationdice = data.define('locationdice', {
     underscored: true,
 });
 
-
-data.sync().then(() => {
-});
-
 module.exports = Locationdice;

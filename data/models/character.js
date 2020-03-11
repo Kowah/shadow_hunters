@@ -41,7 +41,4 @@ const Character = data.define('characters', {
 
 Character.belongsTo(Role);
 
-data.sync().then(() => {
-});
-
 module.exports = Character;

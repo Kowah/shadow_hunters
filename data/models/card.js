@@ -33,7 +33,4 @@ const Card = data.define('card', {
 
 Card.belongsTo(Cardtype);
 
-data.sync().then(() => {
-});
-
 module.exports = Card;

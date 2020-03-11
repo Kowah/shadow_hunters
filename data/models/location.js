@@ -28,7 +28,4 @@ const Location = data.define('location', {
 
 Location.hasMany(Locationdice);
 
-data.sync().then(() => {
-});
-
 module.exports = Location;

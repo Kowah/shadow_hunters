@@ -23,12 +23,9 @@ const Player = data.define('player', {
 });
 
 Player.addHook('beforeValidate', (player, options) => {
-    let chance = new Chance();
-    let name = chance.name({ nationality: 'en' });
-    if(!player.name)
-        player.name = name;
+    if(!player.name){
+        player.name = new Chance().name({ nationality: 'en' });
+    }
 });
-
-data.sync().then(() => {});
 
 module.exports = Player;

@@ -19,13 +19,8 @@ const Game = data.define('game', {
 });
 
 Game.addHook('beforeValidate', (game, options) => {
-    let chance = new Chance();
-    console.log('test');
     if(!game.publicId)
-        game.publicId = chance.guid();
+        game.publicId = new Chance().guid();
 });
-
-
-data.sync().then(() => {});
 
 module.exports = Game;
